@@ -1,4 +1,4 @@
-- hosts: rhel-8
+- hosts: all
   vars_files:
     - vars/vault.yml
   roles:
