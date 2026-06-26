@@ -10,3 +10,4 @@
         rhel_sat_reg_satellite_org_name: "Lab"
         rhel_sat_reg_satellite_host: "sat.server.lab"
         rhel_sat_reg_action: "register"  # or "deregister"
+        rhel_sat_reg_insecure: true
