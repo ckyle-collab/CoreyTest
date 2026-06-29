@@ -1,0 +1,8 @@
+- name: Patch RHEL servers
+  hosts: rhel_servers
+  gather_facts: true
+  vars:
+    rhel_patching_update_cache: true
+    rhel_patching_package_cleanup: true
+  roles:
+    - role: infra.ado.rhel_patching
