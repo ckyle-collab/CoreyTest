@@ -1,0 +1,10 @@
+- hosts: all
+  gather_facts: false
+  vars:
+    rhel_services_management_service_names:
+      - sshd
+      - crond
+    rhel_services_management_service_state: started
+    rhel_services_management_service_enabled: true
+  roles:
+    - role: infra.ado.rhel_services_management
