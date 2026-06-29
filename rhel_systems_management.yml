@@ -1,5 +1,6 @@
 - hosts: all
   gather_facts: false
+  become: true
   vars:
     rhel_services_management_service_names:
       - sshd
