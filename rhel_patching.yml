@@ -1,5 +1,5 @@
 - name: Patch RHEL servers
-  hosts: rhel_servers
+  hosts: all
   gather_facts: true
   vars:
     rhel_patching_update_cache: true
