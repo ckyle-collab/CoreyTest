@@ -1,0 +1,12 @@
+- name: Execute the cert-manager role
+  hosts: all
+  become: true
+  gather_facts: false
+  roles:
+    - role: ado.openshift_infrastructure_automation.cert-manager
+      vars:
+        aap_install_action: install
+        aap_install_version: 1.0.0
+        aap_install_source: https://github.com/redhat-cop/aap-install.git
+        aap_install_branch: main
+        aap_install_commit: 1234567890
