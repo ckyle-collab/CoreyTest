@@ -1,7 +1,7 @@
 ---
 - name: Install cert-manager operator on OpenShift
-  hosts: localhost
-  connection: local
+  hosts: all
+  become: true
   gather_facts: false
   roles:
     - role: infra.ado.ocp_operator_subscription
