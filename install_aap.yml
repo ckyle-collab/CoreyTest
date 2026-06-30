@@ -1,12 +1,24 @@
-- name: Execute the cert-manager role
-  hosts: all
-  become: true
+---
+- name: Install cert-manager operator on OpenShift
+  hosts: localhost
+  connection: local
   gather_facts: false
   roles:
-    - role: ado.openshift_infrastructure_automation.cert-manager
+    - role: infra.ado.ocp_operator_subscription
       vars:
-        aap_install_action: install
-        aap_install_version: 1.0.0
-        aap_install_source: https://github.com/redhat-cop/aap-install.git
-        aap_install_branch: main
-        aap_install_commit: 1234567890
+        state: present
+        name_space: cert-manager-operator
+        operator_name: openshift-cert-manager-operator
+        operator_channel: stable-v1
+        operator_source: redhat-operators
+        operator_source_namespace: openshift-marketplace
+        operatorgroup: cert-manager-operator-group
+        all_namespaces_install: true
+        installPlanApproval: Automatic
+
+    - role: infra.ado.ocp_wait_operator
+      vars:
+        name_space: cert-manager-operator
+        operator_name_substring: cert-manager
+        operator_poll_interval: 10
+        operator_install_timeout: 900
