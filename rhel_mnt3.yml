@@ -1,0 +1,9 @@
+- hosts: all
+  become: true
+  vars:
+    rhel_mount_action: mounted
+    rhel_mount_target_device: fs-12345678.efs.us-east-1.amazonaws.com:/
+    rhel_mount_path: /mnt/efs
+    rhel_mount_fstype: efs
+  roles:
+    - role: infra.ado.rhel_mount

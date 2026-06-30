@@ -1,0 +1,9 @@
+- hosts: all
+  become: true
+  vars:
+    rhel_mount_action: mounted
+    rhel_mount_target_device: /dev/sdb1
+    rhel_mount_path: /mnt/data
+    rhel_mount_fstype_detection: true
+  roles:
+    - role: infra.ado.rhel_mount

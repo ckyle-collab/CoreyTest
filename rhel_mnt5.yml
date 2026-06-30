@@ -1,0 +1,7 @@
+- hosts: all
+  become: true
+  vars:
+    rhel_mount_action: absent
+    rhel_mount_path: /mnt/data
+  roles:
+    - role: infra.ado.rhel_mount
