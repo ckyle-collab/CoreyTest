@@ -4,6 +4,6 @@
     rhel_mount_action: mounted
     rhel_mount_target_device: /dev/sdb1
     rhel_mount_path: /mnt/data
-    rhel_mount_fstype_detection: true
+    rhel_mount_fstype_detection: false
   roles:
     - role: infra.ado.rhel_mount
