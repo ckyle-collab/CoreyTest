@@ -1,0 +1,17 @@
+- hosts: localhost
+  gather_facts: false
+  vars_files:
+    - vars/vault.yml
+  roles:
+    - role: infra.ado.rhbk_manage_idp
+      vars:
+        state: present
+        rhbk_host: rhbk.server.lab
+        rhbk_realm: LAB
+        rhbk_admin_user: admin
+        rhbk_admin_password: "{{ vault_rhbk_admin_password }}"
+        rhbk_verify_ssl: false
+        rhbk_setup_idp_entra_discovery_url: "https://login.microsoftonline.com/583195f2-017d-4005-841c-66e39b2bbd12/v2.0"
+        entra_idp_alias: entra
+        entra_client_id: "583195f2-017d-4005-841c-66e39b2bbd12"
+        entra_client_secret: "wKUxQ~X-M713Y2z1N_W81zT9Lq-bGJ1S2142~13"
