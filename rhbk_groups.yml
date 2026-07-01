@@ -1,0 +1,14 @@
+- hosts: all
+  gather_facts: false
+  vars_files:
+    - vars/vault.yml
+  roles:
+    - role: infra.ado.rhbk_groups
+      vars:
+        state: present
+        rhbk_group_name: platform-admins
+        rhbk_realm: LAB
+        rhbk_verify_ssl: false
+        rhbk_hostname: "https://rhbk.server.lab"
+        rhbk_username: admin_rhbk
+        rhbk_password: "{{ vault_rhbk_admin_password }}"
