@@ -1,0 +1,12 @@
+- hosts: localhost
+  gather_facts: false
+  roles:
+    - role: infra.ado.rhbk_client_scope
+      vars:
+        state: present
+        rhbk_host: rhbk.server.lab
+        rhbk_admin_user: admin
+        rhbk_admin_password: "{{ vault_rhbk_admin_password }}"
+        rhbk_realm: LAB
+        rhbk_client_scope_name: rhel-9
+        rhbk_verify_ssl: false
