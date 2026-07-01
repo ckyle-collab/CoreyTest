@@ -1,15 +1,12 @@
-- hosts: all
-  become: true
+- hosts: localhost
   gather_facts: false
-  vars_files:
-    - vars/vault.yml
   roles:
     - role: infra.ado.rhbk_client
       vars:
         state: present
         rhbk_hostname: rhbk.server.lab
         rhbk_admin_user: admin_rhbk
-        rhbk_admin_password: "{{ lookup('vault', 'vault_rhbk_password') }}"
+        rhbk_admin_password: "{{ vault_rhbk_admin_password }}"
         rhbk_realm: LAB
         rhbk_client: rhel-9
-        rhbk_verify_ssl: false
+        rhbk_verify_ssl: true
