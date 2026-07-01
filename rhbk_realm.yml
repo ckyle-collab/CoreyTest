@@ -1,0 +1,15 @@
+- hosts: localhost
+  gather_facts: false
+  vars_files:
+    - vars/vault.yml
+  roles:
+    - role: infra.ado.rhbk_realm
+      vars:
+        state: present
+        rhbk_realm: LAB
+        rhbk_hostname: rhbk.server.lab
+        rhbk_admin_user: admin
+        rhbk_admin_password: "{{ vault_rhbk_admin_password }}"
+        rhbk_verify_ssl: false
+        rhbk_enabled: true
+        rhbk_display_name: "LAB"
