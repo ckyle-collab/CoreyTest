@@ -1,0 +1,21 @@
+- hosts: localhost
+  gather_facts: false
+  vars_files:
+    - vars/vault.yml
+  roles:
+    - role: infra.ado.rhbk_setup_mapper
+      vars:
+        state: present
+        rhbk_host: rhbk.server.lab
+        rhbk_realm: LAB
+        rhbk_admin_user: admin
+        rhbk_admin_password: "{{ vault_rhbk_admin_password }}"
+        rhbk_verify_ssl: false
+        rhbk_federation_name: LAB
+        ldap_group_config:
+          groups.dn:
+            - "ou=Groups,dc=lab,dc=server,dc=com"
+          mode:
+            - "LDAP_ONLY"
+          membership.ldap.attribute:
+            - "member"
