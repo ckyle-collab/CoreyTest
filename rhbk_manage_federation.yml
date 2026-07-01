@@ -1,0 +1,16 @@
+- hosts: localhost
+  gather_facts: false
+  vars_files:
+    - vars/vault.yml
+  roles:
+    - role: infra.ado.rhbk_manage_federation
+      vars:
+        state: present
+        rhbk_host: rhbk.server.lab
+        rhbk_admin_user: admin
+        rhbk_admin_password: "{{ vault_rhbk_admin_password }}"
+        rhbk_realm: LAB
+        rhbk_verify_ssl: true
+        rhbk_federation_name: LAB
+        ldap_config:
+          enabled: true
